@@ -1,0 +1,76 @@
+# TODO: Documentar está classe.
+
+server:
+  port: 8085
+
+spring:
+  application:
+    name: auth-service
+
+  datasource:
+    url: jdbc:postgresql://${DB_URL:localhost}:${DB_PORT:5432}/${DB_NAME:houpper}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:develop}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        '[format_sql]': true
+        '[show_sql]': true
+    open-in-view: false
+
+
+#security:
+#  jwt:
+#    secret: ${JWT_SECRET:9c6d2f7e8b5a1c4d3f9e7a6b2c8d1f5e4a9b7c6d3e2f1a8b5c4d9e7f6a1b2c3d}
+#    access-token-expiration: 900 # 15 Minutos.
+#    refresh-token-expiration: 604800 # 7 Dias.
+
+logging:
+  level:
+    # Nível padrão da aplicação.
+    # INFO exibe logs INFO, WARN e ERROR.
+    root: INFO
+
+    # Logs da aplicação (LOGGER.info(), LOGGER.warn(), LOGGER.error()).
+    '[br.com.houpper]': INFO
+
+    # Spring Framework.
+    '[org.springframework]': INFO
+
+    # Spring JDBC.
+    '[org.springframework.jdbc]': INFO
+
+    # Gerenciamento de transações.
+    '[org.springframework.transaction]': INFO
+
+    # Spring Security.
+    '[org.springframework.security]': INFO
+
+    # Hibernate.
+    '[org.hibernate]': WARN
+
+    # SQL gerado pelo Hibernate.
+    '[org.hibernate.SQL]': WARN
+
+    # Valores dos parâmetros enviados nas consultas SQL.
+    '[org.hibernate.orm.jdbc.bind]': WARN
+
+    # Valores retornados pelo JDBC.
+    '[org.hibernate.orm.jdbc.extract]': WARN
+
+    # Conversão de tipos JDBC.
+    '[org.hibernate.type.descriptor.jdbc]': WARN
+
+    # Flyway.
+    '[org.flywaydb]': INFO
+
+    # Pool de conexões HikariCP.
+    '[com.zaxxer.hikari]': INFO
+
+    # Tomcat.
+    '[org.apache.catalina]': INFO
+    '[org.apache.tomcat]': INFO
